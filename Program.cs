@@ -1,7 +1,7 @@
-
 using EventPlanningCapstoneProject.Data;
+using EventPlanningCapstoneProject.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace EventPlanningCapstoneProject
 {
@@ -15,8 +15,15 @@ namespace EventPlanningCapstoneProject
 
             builder.Services.AddControllers();
 
+            // Register DbContext with SQL Server connection string
             builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add ASP.NET Core Identity services, with IdentityRole as the role class
+            builder.Services.AddIdentity<User, IdentityRole<int>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -31,10 +38,9 @@ namespace EventPlanningCapstoneProject
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
-
+            // Map controllers
             app.MapControllers();
 
             app.Run();

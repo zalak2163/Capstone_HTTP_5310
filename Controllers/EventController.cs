@@ -65,9 +65,17 @@ namespace EventPlanningCapstoneProject.Controllers
         }
 
         // POST api/event
+        // POST api/event
         [HttpPost]
         public async Task<ActionResult<EventDto>> PostEvent(EventDto eventDto)
         {
+            // Check if the organizer exists in the database
+            var organizer = await _context.Users.FindAsync(eventDto.OrganizerId);
+            if (organizer == null)
+            {
+                return BadRequest("Invalid OrganizerId.");
+            }
+
             var newEvent = new Event
             {
                 Title = eventDto.Title,
@@ -76,7 +84,7 @@ namespace EventPlanningCapstoneProject.Controllers
                 Location = eventDto.Location,
                 Image = eventDto.Image,
                 CreatedAt = DateTime.UtcNow,
-                OrganizerId = eventDto.OrganizerId
+                OrganizerId = eventDto.OrganizerId  // Ensure valid OrganizerId
             };
 
             _context.Events.Add(newEvent);
@@ -85,6 +93,7 @@ namespace EventPlanningCapstoneProject.Controllers
             eventDto.Id = newEvent.Id;
             return CreatedAtAction(nameof(GetEvent), new { id = newEvent.Id }, eventDto);
         }
+
 
         // PUT api/event/5
         [HttpPut("{id}")]

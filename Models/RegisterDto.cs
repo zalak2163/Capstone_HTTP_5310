@@ -9,12 +9,15 @@ namespace EventPlanningCapstoneProject.Models
         public string Email { get; set; }
 
         [Required]
-        public string Password { get; set; }  // Password used for registration
+        [StringLength(100, MinimumLength = 8)]
+        [RegularExpression("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$", ErrorMessage = "Password must have at least 8 characters, including an uppercase letter, a number, and a special character.")]
+        public string Password { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
+        [Phone]
         public string Phone { get; set; }
     }
 }

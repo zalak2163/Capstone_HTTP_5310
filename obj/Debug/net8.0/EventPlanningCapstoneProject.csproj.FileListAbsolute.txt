@@ -5,6 +5,7 @@ D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlan
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.csproj.CoreCompileInputs.cache
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.MvcApplicationPartsAssemblyInfo.cs
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.MvcApplicationPartsAssemblyInfo.cache
+D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.sourcelink.json
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\bin\Debug\net8.0\appsettings.Development.json
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\bin\Debug\net8.0\appsettings.json
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\bin\Debug\net8.0\EventPlanningCapstoneProject.exe
@@ -170,4 +171,3 @@ D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\refint\Ev
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.pdb
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.genruntimeconfig.cache
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\ref\EventPlanningCapstoneProject.dll
-D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.sourcelink.json

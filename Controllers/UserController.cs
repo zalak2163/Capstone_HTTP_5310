@@ -26,8 +26,7 @@ namespace EventPlanningCapstoneProject.Controllers
                                           Id = u.Id,
                                           Email = u.Email,
                                           Name = u.Name,
-                                          Phone = u.Phone,
-                                          Role = u.Role,
+                                          Phone = u.PhoneNumber,
                                           CreatedAt = u.CreatedAt
                                       })
                                       .ToListAsync();
@@ -46,8 +45,7 @@ namespace EventPlanningCapstoneProject.Controllers
                                          Id = u.Id,
                                          Email = u.Email,
                                          Name = u.Name,
-                                         Phone = u.Phone,
-                                         Role = u.Role,
+                                         Phone = u.PhoneNumber,
                                          CreatedAt = u.CreatedAt
                                      })
                                      .FirstOrDefaultAsync();
@@ -67,9 +65,9 @@ namespace EventPlanningCapstoneProject.Controllers
             var user = new User
             {
                 Email = userDto.Email,
+                UserName = userDto.Email, // Usually, the UserName is the same as the Email
                 Name = userDto.Name,
-                Phone = userDto.Phone,
-                Role = userDto.Role,
+                PhoneNumber = userDto.Phone, // Mapping Phone to PhoneNumber
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -79,6 +77,7 @@ namespace EventPlanningCapstoneProject.Controllers
             userDto.Id = user.Id;
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, userDto);
         }
+
 
         // PUT api/user/5
         [HttpPut("{id}")]
@@ -93,8 +92,7 @@ namespace EventPlanningCapstoneProject.Controllers
 
             user.Email = userDto.Email;
             user.Name = userDto.Name;
-            user.Phone = userDto.Phone;
-            user.Role = userDto.Role;
+            user.PhoneNumber = userDto.Phone;
 
             await _context.SaveChangesAsync();
 

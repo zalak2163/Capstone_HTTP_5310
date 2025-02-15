@@ -78,6 +78,45 @@ namespace EventPlanningCapstoneProject.Controllers
 
             return CreatedAtAction("GetEventCalendar", new { id = eventCalendar.Id }, calendarDto);
         }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEventCalendar(int id, CalendarDto calendarDto)
+        {
+            if (id != calendarDto.Id)
+            {
+                return BadRequest("Event Calendar ID mismatch");
+            }
+
+            // Validate UserId exists
+            var userExists = await _context.Users.AnyAsync(u => u.Id == calendarDto.UserId);
+            if (!userExists)
+            {
+                return BadRequest("User with the given ID does not exist.");
+            }
+
+            // Validate EventId exists
+            var eventExists = await _context.Events.AnyAsync(e => e.Id == calendarDto.EventId);
+            if (!eventExists)
+            {
+                return BadRequest("Event with the given ID does not exist.");
+            }
+
+            var eventCalendar = await _context.EventCalendars.FindAsync(id);
+            if (eventCalendar == null)
+            {
+                return NotFound();
+            }
+
+            // Update properties of the eventCalendar with the data from calendarDto
+            eventCalendar.UserId = calendarDto.UserId;
+            eventCalendar.EventId = calendarDto.EventId;
+            eventCalendar.EventDate = calendarDto.EventDate;
+
+            // Save changes to the database
+            _context.Entry(eventCalendar).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent(); // Status code 204, which means the update was successful but there's no content to return
+        }
 
         // DELETE: api/EventCalendar/5
         [HttpDelete("{id}")]

@@ -6,15 +6,10 @@ namespace EventPlanningCapstoneProject.Models
     public class User : IdentityUser<int>
     {
         [Required]
-        //public int Id { get; set; }  
-        public string Email { get; set; }
-        public string Role { get; set; }
-
-        [Required]
         public string Name { get; set; }
 
         [Required]
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
@@ -27,9 +22,8 @@ namespace EventPlanningCapstoneProject.Models
 
     public class UserDto
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string Email { get; set; }
-        public string Role { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
         public DateTime CreatedAt { get; set; }
