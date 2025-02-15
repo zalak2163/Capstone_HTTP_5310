@@ -11,11 +11,11 @@ using EventPlanningCapstoneProject.Models;
 
 namespace EventPlanningCapstoneProject.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        //public DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
@@ -27,7 +27,28 @@ namespace EventPlanningCapstoneProject.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Define precision for decimal properties
+            // Configure Purchase <-> User Relationship
+            modelBuilder.Entity<Purchase>()
+                .HasOne(p => p.User)  // Purchase has one User
+                .WithMany()  // User can have many Purchases (but no navigation property in User class)
+                .HasForeignKey(p => p.UserId)  // Define foreign key as UserId
+                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade delete
+
+            // Configure Purchase <-> Event Relationship
+            modelBuilder.Entity<Purchase>()
+                .HasOne(p => p.Event)  // Purchase has one Event
+                .WithMany()  // Event can have many Purchases (but no navigation property in Event class)
+                .HasForeignKey(p => p.EventId)  // Define foreign key as EventId
+                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade delete
+
+            // Configure Purchase <-> Ticket Relationship
+            modelBuilder.Entity<Purchase>()
+                .HasOne(p => p.Ticket)  // Purchase has one Ticket
+                .WithMany()  // Ticket can have many Purchases (but no navigation property in Ticket class)
+                .HasForeignKey(p => p.TicketId)  // Define foreign key as TicketId
+                .OnDelete(DeleteBehavior.Restrict);  // Prevent cascade delete
+
+            // Define the precision for decimal fields
             modelBuilder.Entity<Payment>()
                 .Property(p => p.Amount)
                 .HasColumnType("decimal(18,2)");
@@ -39,23 +60,8 @@ namespace EventPlanningCapstoneProject.Data
             modelBuilder.Entity<Ticket>()
                 .Property(t => t.Price)
                 .HasColumnType("decimal(18,2)");
-
-            // Explicitly define the foreign key relationship between Purchase and Ticket
-            modelBuilder.Entity<Purchase>()
-                .HasOne(p => p.Ticket)
-                .WithMany()
-                .HasForeignKey(p => p.TicketId)
-                .OnDelete(DeleteBehavior.Restrict);  // Avoid cascading delete for Ticket
-
-            // Explicitly define the foreign key relationship between Purchase and Event
-            modelBuilder.Entity<Purchase>()
-                .HasOne(p => p.Event)
-                .WithMany()
-                .HasForeignKey(p => p.EventId)
-                .OnDelete(DeleteBehavior.Restrict);  // Avoid cascading delete for Event
-
-            // Define other relationships, if needed
         }
+
 
 
     }

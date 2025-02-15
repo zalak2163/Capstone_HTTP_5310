@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EventPlanningCapstoneProject.Models
 {
-    public class User 
+    public class User : IdentityUser<int>
     {
         [Required]
-        public int Id { get; set; }  
+        //public int Id { get; set; }  
         public string Email { get; set; }
         public string Role { get; set; }
 

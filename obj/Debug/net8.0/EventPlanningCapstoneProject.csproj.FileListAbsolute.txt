@@ -170,3 +170,4 @@ D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\refint\Ev
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.pdb
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.genruntimeconfig.cache
 D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\ref\EventPlanningCapstoneProject.dll
+D:\SEM2\CAPSTONE_PROJECT\EventPlanningCapstoneProject\obj\Debug\net8.0\EventPlanningCapstoneProject.sourcelink.json
