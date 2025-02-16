@@ -27,8 +27,16 @@ namespace EventPlanningCapstoneProject.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure Purchase <-> User Relationship
-            modelBuilder.Entity<Purchase>()
+            // Configure the relationship between Event and User for OrganizerId
+            modelBuilder.Entity<Event>()
+                .HasOne(e => e.Organizer)  // Event has one Organizer (User)
+                .WithMany()  // User can have many events (no navigation property in User class)
+                .HasForeignKey(e => e.OrganizerId)  // Define foreign key as OrganizerId
+                .OnDelete(DeleteBehavior.SetNull);  // Ensure that the OrganizerId can be null if no organizer is assigned
+        
+
+        // Configure Purchase <-> User Relationship
+        modelBuilder.Entity<Purchase>()
                 .HasOne(p => p.User)  // Purchase has one User
                 .WithMany()  // User can have many Purchases (but no navigation property in User class)
                 .HasForeignKey(p => p.UserId)  // Define foreign key as UserId

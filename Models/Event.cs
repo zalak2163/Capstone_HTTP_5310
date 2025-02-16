@@ -37,9 +37,10 @@ namespace EventPlanningCapstoneProject.Models
         public string OrganizerName { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // Add this to allow the client to send an organizer ID when creating the event
+        // Allow OrganizerId to be nullable (since it's a foreign key in the Event model)
         public int? OrganizerId { get; set; }
     }
+
 
 
 }
