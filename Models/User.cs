@@ -1,17 +1,20 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EventPlanningCapstoneProject.Models
 {
     public class User : IdentityUser<int>
     {
-        [Required]
+        [MaxLength(50)]
         public string Name { get; set; }
-
-        [Required]
+        public DateTime CreatedDate { get; set; }
+     
+        public DateTime ModifiedDate { get; set; }
+    
+        public DateTime LastLogin { get; set; } 
+        public bool IsAdmin { get; set; } = false;
         public string PhoneNumber { get; set; }
-
-        public DateTime CreatedAt { get; set; }
 
         // Navigation Property (Foreign Key Relations)
         public virtual ICollection<Event> Events { get; set; }
@@ -23,9 +26,12 @@ namespace EventPlanningCapstoneProject.Models
     public class UserDto
     {
         public int Id { get; set; }
-        public string Email { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedDate { get; set; } 
+        public DateTime ModifiedDate { get; set; } 
+        public DateTime LastLogin { get; set; } 
+        public bool IsAdmin { get; set; } = false;
+        public string? Email { get; internal set; }
     }
 }

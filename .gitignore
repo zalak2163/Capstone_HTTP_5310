@@ -1,0 +1,16 @@
+# Ignore Visual Studio temporary files
+.vs/
+
+# Ignore build output folders
+bin/
+obj/
+
+# Ignore .user files and other IDE-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Ignore application settings (if they contain sensitive information)
+appsettings.json
+appsettings.Development.json

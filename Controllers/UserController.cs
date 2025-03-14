@@ -27,7 +27,7 @@ namespace EventPlanningCapstoneProject.Controllers
                                           Email = u.Email,
                                           Name = u.Name,
                                           Phone = u.PhoneNumber,
-                                          CreatedAt = u.CreatedAt
+                                          CreatedDate = u.CreatedDate
                                       })
                                       .ToListAsync();
 
@@ -46,7 +46,7 @@ namespace EventPlanningCapstoneProject.Controllers
                                          Email = u.Email,
                                          Name = u.Name,
                                          Phone = u.PhoneNumber,
-                                         CreatedAt = u.CreatedAt
+                                         CreatedDate = u.CreatedDate
                                      })
                                      .FirstOrDefaultAsync();
 
@@ -68,7 +68,7 @@ namespace EventPlanningCapstoneProject.Controllers
                 UserName = userDto.Email, // Usually, the UserName is the same as the Email
                 Name = userDto.Name,
                 PhoneNumber = userDto.Phone, // Mapping Phone to PhoneNumber
-                CreatedAt = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow
             };
 
             _context.Users.Add(user);

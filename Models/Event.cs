@@ -39,6 +39,7 @@ namespace EventPlanningCapstoneProject.Models
 
         // Allow OrganizerId to be nullable (since it's a foreign key in the Event model)
         public int? OrganizerId { get; set; }
+        public List<TicketDto> Tickets { get; set; }
     }
 
 
